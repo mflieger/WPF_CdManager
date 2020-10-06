@@ -1,0 +1,43 @@
+﻿<Window x:Class="CdManager.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="340" Width="511" MinHeight="180" MinWidth="392"
+        Style="{StaticResource ResourceKey=WindowStyle}"
+        Name="wdMain">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto"></RowDefinition>
+      <RowDefinition></RowDefinition>
+      <RowDefinition Height="Auto"></RowDefinition>
+    </Grid.RowDefinitions>
+    <TextBlock Grid.Row="0" Style="{StaticResource ResourceKey=FormCaptionStyle}">
+            Cd-Sammlung
+    </TextBlock>
+    <!--    <ListBox Grid.Row="1" Name="lbxCds">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=AlbumTitle}"/>
+                        <TextBlock Text=" / "/>
+                        <TextBlock Text="{Binding Path=Artist}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>  -->
+    <ListView Grid.Row="1" Name="lbxCds">
+      <ListView.View>
+        <GridView>
+          <GridView.Columns>
+            <GridViewColumn Header="Cd-Titel" Width="200" DisplayMemberBinding="{Binding Path=AlbumTitle}"/>
+            <GridViewColumn Header="Artist" Width="200" DisplayMemberBinding="{Binding Path=Artist}"/>
+          </GridView.Columns>
+        </GridView>
+      </ListView.View>
+    </ListView>
+    <UniformGrid Grid.Row="2" Rows="1" Columns="3">
+        <Button Template="{StaticResource ResourceKey=buttonTemplate}" Name="btNew" Margin="10,10,10,10">Neu</Button>
+        <Button Template="{StaticResource ResourceKey=buttonTemplate}" Name="btDelete" Margin="10,10,10,10">Löschen</Button>
+        <Button Template="{StaticResource ResourceKey=buttonTemplate}" Name="btEditTracks" Margin="10,10,10,10">Tracks bearbeiten</Button>
+    </UniformGrid>
+  </Grid>
+</Window>
